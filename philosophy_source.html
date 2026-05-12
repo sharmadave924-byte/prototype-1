@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZENITH ARC - Timeless Wisdom</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed": "#3d0026",
+                        "outline-variant": "#44474d",
+                        "on-error": "#690005",
+                        "primary-container": "#1a2a40",
+                        "surface-container-low": "#1c1b1b",
+                        "on-primary-container": "#8191ac",
+                        "on-secondary": "#5e1700",
+                        "inverse-on-surface": "#313030",
+                        "primary-fixed": "#d4e3ff",
+                        "inverse-surface": "#e5e2e1",
+                        "on-secondary-fixed": "#3a0b00",
+                        "secondary-fixed": "#ffdbd0",
+                        "surface-variant": "#353534",
+                        "surface-bright": "#393939",
+                        "on-background": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#852400",
+                        "primary": "#b7c7e4",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#c4c6cd",
+                        "surface-tint": "#b7c7e4",
+                        "on-primary": "#213147",
+                        "tertiary-container": "#560037",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary-fixed-dim": "#ffafd3",
+                        "tertiary-fixed": "#ffd8e7",
+                        "on-secondary-container": "#521300",
+                        "surface-dim": "#131313",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "background": "#131313",
+                        "outline": "#8e9197",
+                        "secondary-container": "#ff571a",
+                        "on-surface": "#e5e2e1",
+                        "on-tertiary-container": "#ff40b1",
+                        "inverse-primary": "#505f78",
+                        "primary-fixed-dim": "#b7c7e4",
+                        "on-tertiary": "#620040",
+                        "on-primary-fixed-variant": "#38485f",
+                        "surface": "#131313",
+                        "secondary-fixed-dim": "#ffb59e",
+                        "surface-container-highest": "#353534",
+                        "surface-container": "#201f1f",
+                        "tertiary": "#ffafd3",
+                        "secondary": "#ffb59e",
+                        "on-tertiary-fixed-variant": "#8b005b",
+                        "on-primary-fixed": "#0b1c31"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Bebas Neue"],
+                        "label-md": ["Montserrat"],
+                        "body-lg": ["EB Garamond"],
+                        "headline-lg-mobile": ["Bebas Neue"],
+                        "display-md": ["Bebas Neue"],
+                        "headline-lg": ["Bebas Neue"],
+                        "body-md": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["72px", { "lineHeight": "72px", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body-lg": ["20px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "display-md": ["48px", { "lineHeight": "48px", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "36px", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        .text-shadow-glow {
+            text-shadow: 0 0 20px rgba(255, 87, 26, 0.5);
+        }
+        .box-shadow-glow {
+            box-shadow: 0 0 30px rgba(183, 199, 228, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-lg antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_0_20px_rgba(255,87,26,0.15)] hidden md:flex">
+<div class="flex items-center gap-4">
+<span class="font-display-lg text-headline-lg text-secondary-container tracking-tighter">ZENITH ARC</span>
+</div>
+<div class="flex items-center gap-8">
+<a class="font-display-md text-display-md uppercase tracking-widest text-secondary-container border-b-2 border-secondary-container pb-1" href="#">Techniques</a>
+<a class="font-display-md text-display-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface hover:text-secondary hover:scale-105 transition-all duration-300" href="#">Philosophy</a>
+<a class="font-display-md text-display-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface hover:text-secondary hover:scale-105 transition-all duration-300" href="#">Chronicles</a>
+<a class="font-display-md text-display-md uppercase tracking-widest text-on-surface-variant hover:text-on-surface hover:text-secondary hover:scale-105 transition-all duration-300" href="#">Masters</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group cursor-pointer text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="search">search</span>
+</div>
+<button class="bg-secondary-container text-on-secondary-container font-label-md text-label-md uppercase px-6 py-3 rounded-DEFAULT hover:bg-secondary transition-colors shadow-[0_0_15px_rgba(255,87,26,0.4)]">Begin Training</button>
+</div>
+</nav>
+<!-- Mobile Top Bar (Simplified) -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 bg-surface/90 backdrop-blur-xl md:hidden shadow-lg border-b border-outline-variant/20">
+<span class="font-display-lg text-headline-lg-mobile text-secondary-container tracking-tighter">ZENITH ARC</span>
+<button class="text-on-surface"><span class="material-symbols-outlined text-3xl">menu</span></button>
+</nav>
+<!-- Main Content -->
+<main class="w-full relative">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img alt="Hero Background" class="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity" data-alt="A dramatic sunset scene over a misty, ancient forest with towering mountains in the distance. The atmosphere is intense and cinematic, heavily stylized in a dark mode aesthetic with deep charcoal shadows and vibrant, glowing orange and red light piercing through the mist. The mood is epic, disciplined, and full of latent energy, suitable for a high-contrast hero background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpCsSua4RE2c8v3C5-SdonsMHknUq9Wve0Vxia_ENCM2l9Tn6YOP1wQkpsiZ1lYcr1mAy2zfsSGhizMgz2X2JLTB1HX5U83qEqDw_DT1h6Boc3XZM4R9lCOEZVNeer0CTxWIrHvioTx7OdsKb-nGAHt5YoGhQAWpIVQpqjpLPqjLUOe9dX3bCam2EdVwtL5xd2UmD2ML4-Mzmg_5Y1mcH6X6n18SiLn63MNpRWb8xM7Bh_8ZWLNyyHW1Y-C9pcm4JO77aBrKbWCR8B"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-surface/50 to-transparent h-32"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center flex flex-col items-center">
+<span class="font-label-md text-label-md text-secondary tracking-[0.2em] uppercase mb-4 opacity-80 border border-secondary/30 px-4 py-1 rounded-full backdrop-blur-sm bg-surface-container/30">The Forge of the Mind</span>
+<h1 class="font-display-lg text-[64px] md:text-[96px] leading-[1.1] text-on-surface mb-6 text-shadow-glow uppercase tracking-wide">
+                    Timeless Wisdom <br/>
+<span class="text-secondary-container">For the Modern Mind</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10 text-lg md:text-xl leading-relaxed">
+                    Harness the eternal flame of ancient philosophies. Forge your spirit, sharpen your focus, and master the techniques that have guided warriors through the darkest nights.
+                </p>
+<div class="flex flex-col sm:flex-row gap-6">
+<button class="bg-secondary-container text-on-secondary-container font-label-md text-label-md uppercase px-8 py-4 rounded-DEFAULT hover:bg-secondary hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(255,87,26,0.6)] flex items-center justify-center gap-2">
+<span>Begin Training</span>
+<span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+<button class="bg-transparent border border-outline text-on-surface font-label-md text-label-md uppercase px-8 py-4 rounded-DEFAULT hover:border-primary hover:bg-primary/10 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-md">
+<span>Explore Scrolls</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Bento Grid Section (Philosophies/Techniques) -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop relative z-10 max-w-container-max mx-auto">
+<div class="mb-16 flex flex-col md:flex-row justify-between items-end gap-6 border-b border-outline-variant/30 pb-6">
+<div>
+<h2 class="font-display-md text-display-md text-on-surface uppercase tracking-wider mb-2">Core Breath Techniques</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Foundational philosophies to structure your internal combat.</p>
+</div>
+<button class="text-secondary font-label-md text-label-md uppercase hover:text-secondary-fixed transition-colors flex items-center gap-1 group">
+                    View All Disciplines <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">east</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Card (Stoicism) -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container p-8 md:p-12 box-shadow-glow border border-outline-variant/20 flex flex-col justify-end min-h-[400px]">
+<div class="absolute inset-0 z-0">
+<img alt="Stoicism Mountain" class="w-full h-full object-cover object-center opacity-30 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700 mix-blend-luminosity" data-alt="A stark, majestic mountain peak emerging through heavy, dramatic storm clouds. The lighting is cinematic dark mode, with a solitary, piercing ray of bright white/blue light hitting the rocky summit. The image evokes a sense of unyielding strength, calm resilience, and epic scale, fitting the concept of Stoicism. High contrast, atmospheric glassmorphism aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0KgjNVrKbv5wf1arRHddbBxieMEqLTTenBRVRb0P3Jn9Ikw8CcKgwxvMhe0q-Cr-T9aXaDBquxj7HZ4N9xjz6-3lODNQcaGDh3oTiy8UUqMZOqMf8xGUPHjRQJZPgG2v4MdRkhocrxbyOQg9WpZp7aoww59SgMHh3AytgqjruaUYPiUAwzp7Ddkewz1Hzwl-MII2vvLPHbs95Syd6_SQhm2x-K1LRpTr4kCrx44RU-IRgxFs5cIfJTE1JZEUKpiSu8UEX1-1_SpCR"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container/50 to-transparent"></div>
+</div>
+<div class="relative z-10">
+<span class="inline-block bg-primary-container/50 text-primary font-label-md text-[12px] px-3 py-1 rounded-sm uppercase tracking-wider mb-4 border border-primary/20 backdrop-blur-sm">Breath of Stone</span>
+<h3 class="font-display-md text-headline-lg text-on-surface mb-3 uppercase tracking-wide">Stoicism</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg mb-6 line-clamp-3">
+                            The art of enduring the storm. Focus on what you can control, and let the chaos of the world crash against you like waves upon an unyielding cliff face. Master your internal reactions.
+                        </p>
+<a class="inline-flex items-center gap-2 text-primary font-label-md hover:text-primary-fixed transition-colors" href="#">
+                            Study Technique <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Small Card 1 (Existentialism) -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container p-8 box-shadow-glow border border-outline-variant/20 flex flex-col justify-end min-h-[400px]">
+<div class="absolute inset-0 z-0">
+<img alt="Existentialism Spark" class="w-full h-full object-cover object-center opacity-30 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700 mix-blend-luminosity" data-alt="A close-up of a vibrant, glowing ember or spark flying off a blacksmith's anvil in a dark, shadowy forge. The background is pitch black charcoal, while the spark is a brilliant, intense orange and yellow. The aesthetic is epic and kinetic, symbolizing the spark of individual creation and meaning in an otherwise dark universe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhPjp0wogsl93rk4R8r6DL5dT4ssRPxF3KuPphZbkcyfRH9LyEpDveMEXmaMTngUTuFEa9MAAz5WVdZXGixwuj0Q-FQyyaABra2w0mv7elKwf3cdC6JTT1DaqOsnXNzSLWILrHQ76yMaYf_kjJcn-STX0SAyyKw301ToG9UrQtcG9jpkkxB1qiKNPep_Ofs5QzqLxNTEh1aued3zRqId4uVfbV3Q8yiwrRc6dMHcne1vcRcBeoZixMpOyzGF1VlEJPrLNl3S-BLeYi"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container to-transparent"></div>
+</div>
+<div class="relative z-10">
+<span class="inline-block bg-secondary-container/30 text-secondary-container font-label-md text-[12px] px-3 py-1 rounded-sm uppercase tracking-wider mb-4 border border-secondary-container/20 backdrop-blur-sm">Breath of Flame</span>
+<h3 class="font-display-md text-[28px] text-on-surface mb-3 uppercase tracking-wide">Existentialism</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-2">
+                            Forge your own meaning in the void. You are the architect of your destiny.
+                        </p>
+<a class="inline-flex items-center gap-2 text-secondary-container font-label-md hover:text-secondary transition-colors" href="#">
+                            Study Technique <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Small Card 2 (Taoism) -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container p-8 box-shadow-glow border border-outline-variant/20 flex flex-col justify-end min-h-[400px]">
+<div class="absolute inset-0 z-0">
+<img alt="Taoism Water" class="w-full h-full object-cover object-center opacity-30 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700 mix-blend-luminosity" data-alt="A moody, dark image of a swift river flowing around smooth, dark rocks in a misty forest. The water has a slight luminescent blue tint, contrasting with the deep charcoal shadows of the surrounding woods. The style is atmospheric, fluid, and disciplined, capturing the essence of 'going with the flow' in a high-contrast dark mode setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1cdcL5QzWgaY4kCIStmRCeM_MYhSwbY5Bg6YmAlf4UrxRnz_F8za8MxAWfDkaN015twZ2fLOfGI7iYw-vaOEvczfNwiMvAjTLffnnJbLHZphbGxB5F-KlVseIlGuZCoXbLP6Eh-LrPS8nX9DA9pxbpInO2NcsuHXQyZbA2yrhCOgtr39T_Lk3QTfnz8CBmTjqPK3bgQy0BRDxSFIZW9P1BcNSnhlPHNIA13i46OaOReUOjYb5FN6mjGs0yv8MRK9_Al1lHp9Es61W"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container to-transparent"></div>
+</div>
+<div class="relative z-10">
+<span class="inline-block bg-tertiary-container/40 text-tertiary font-label-md text-[12px] px-3 py-1 rounded-sm uppercase tracking-wider mb-4 border border-tertiary/20 backdrop-blur-sm">Breath of Water</span>
+<h3 class="font-display-md text-[28px] text-on-surface mb-3 uppercase tracking-wide">Taoism</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-2">
+                            Flow like the river. Adapt to the terrain rather than fighting it.
+                        </p>
+<a class="inline-flex items-center gap-2 text-tertiary font-label-md hover:text-tertiary-fixed transition-colors" href="#">
+                            Study Technique <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Medium Card (Absurdism) -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container p-8 md:p-12 box-shadow-glow border border-outline-variant/20 flex flex-col justify-center min-h-[400px]">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-surface-variant/40 via-surface-container to-surface-container"></div>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+<div class="flex-1">
+<span class="inline-block bg-surface-bright text-on-surface font-label-md text-[12px] px-3 py-1 rounded-sm uppercase tracking-wider mb-4 border border-outline/30">Breath of Mist</span>
+<h3 class="font-display-md text-headline-lg text-on-surface mb-3 uppercase tracking-wide">Absurdism</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                                Embrace the chaos. Laugh in the face of the unknown and find joy in the struggle itself. The boulder must be pushed, but you can choose to smile while doing it.
+                            </p>
+<a class="inline-flex items-center gap-2 text-on-surface font-label-md border-b border-on-surface pb-1 hover:text-secondary-container hover:border-secondary-container transition-colors" href="#">
+                                Explore the Absurd <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="w-full md:w-1/3 aspect-square rounded-full border-2 border-outline-variant/30 flex items-center justify-center relative overflow-hidden group-hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-6xl text-outline group-hover:text-primary group-hover:scale-110 transition-all duration-500 blur-[1px] group-hover:blur-none" data-icon="cyclone">cyclone</span>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full blur-xl"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature/Stats Section -->
+<section class="py-24 bg-surface-dim border-y border-outline-variant/20 relative">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 mix-blend-overlay"></div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center divide-x-0 md:divide-x divide-outline-variant/30">
+<div class="px-4">
+<div class="font-display-lg text-[64px] text-primary text-shadow-glow mb-2">12+</div>
+<div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Master Scrolls</div>
+</div>
+<div class="px-4">
+<div class="font-display-lg text-[64px] text-secondary text-shadow-glow mb-2">10k</div>
+<div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Disciples</div>
+</div>
+<div class="px-4">
+<div class="font-display-lg text-[64px] text-tertiary text-shadow-glow mb-2">5</div>
+<div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Breathing Forms</div>
+</div>
+<div class="px-4">
+<div class="font-display-lg text-[64px] text-on-surface text-shadow-glow mb-2">∞</div>
+<div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Wisdom</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-20 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-surface-container-lowest border-t border-outline-variant/50 relative z-10">
+<div class="flex items-center gap-2 mb-8 md:mb-0">
+<span class="font-display-lg text-display-md text-secondary tracking-tighter">ZENITH ARC</span>
+</div>
+<div class="flex flex-wrap justify-center gap-8 mb-8 md:mb-0">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Honor Code</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Scrolls</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">The Forge</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
+</div>
+<div class="font-body-md text-body-md text-secondary-fixed text-center md:text-right opacity-60">
+            © 2024 ZENITH ARC. HARNESS THE ETERNAL FLAME.
+        </div>
+</footer>
+</body></html>
