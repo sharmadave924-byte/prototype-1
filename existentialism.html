@@ -55,16 +55,41 @@
         <div class="flex items-center gap-4">
             <a href="index.html" class="font-display-lg text-lg text-on-surface tracking-tighter opacity-90">ZENITH ARC</a>
         </div>
-        <div class="flex items-center gap-12">
-            <a class="font-display-md text-sm uppercase tracking-[0.3em] text-on-surface/60 hover:text-on-surface hover:scale-105 transition-all duration-300" href="#">Techniques</a>
-            <a class="font-display-md text-sm uppercase tracking-[0.3em] text-on-surface/60 hover:text-on-surface hover:scale-105 transition-all duration-300" href="#">Philosophy</a>
+        <div class="flex items-center gap-16">
+            <a class="font-display-md text-sm uppercase tracking-[0.3em] text-on-surface/60 hover:text-on-surface hover:scale-105 transition-all duration-300" href="index.html">Home</a>
+            <a class="font-display-md text-sm uppercase tracking-[0.3em] text-on-surface/60 hover:text-on-surface hover:scale-105 transition-all duration-300" href="disciplines.html">Philosophy</a>
+            <a class="font-display-md text-sm uppercase tracking-[0.3em] text-on-surface/60 hover:text-on-surface hover:scale-105 transition-all duration-300" href="index.html#techniques-section">Techniques</a>
         </div>
         <div class="flex items-center gap-8">
-            <a href="debate.html" class="border border-secondary-container/50 text-secondary-container font-label-md text-[11px] uppercase px-5 py-2 rounded hover:bg-secondary-container hover:text-on-secondary-container transition-all duration-300 shadow-[0_0_10px_rgba(255,87,26,0.2)]">Debate / Queries</a>
+            <a href="disciplines.html" class="inline-flex items-center gap-2 text-on-surface/60 hover:text-on-surface transition-colors font-label-md text-xs uppercase tracking-[0.2em]">
+                <span class="material-symbols-outlined text-sm">west</span> Back
+            </a>
         </div>
     </nav>
 
-    <main class="w-full relative pt-24 min-h-screen">
+    <!-- Mobile Nav -->
+    <nav class="fixed top-0 left-0 w-full z-50 justify-between items-center px-6 py-6 md:hidden flex transition-all duration-500">
+        <span class="font-display-lg text-lg text-on-surface tracking-tighter opacity-90">ZENITH ARC</span>
+        <button id="mobile-menu-btn" class="text-on-surface opacity-80 hover:opacity-100 transition-opacity">
+            <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu">
+        <button id="mobile-menu-close" class="absolute top-8 right-8 text-on-surface/60 hover:text-on-surface transition-colors">
+            <span class="material-symbols-outlined text-3xl">close</span>
+        </button>
+        
+        <div class="flex flex-col items-center justify-center gap-8 w-full">
+            <a class="mobile-nav-link font-display-md text-3xl md:text-4xl uppercase tracking-[0.3em] text-on-surface/70 hover:text-on-surface transition-all duration-300 text-center" href="index.html">Home</a>
+            <a class="mobile-nav-link font-display-md text-3xl md:text-4xl uppercase tracking-[0.3em] text-on-surface/70 hover:text-on-surface transition-all duration-300 text-center" href="disciplines.html">Philosophy</a>
+            <a class="mobile-nav-link font-display-md text-3xl md:text-4xl uppercase tracking-[0.3em] text-on-surface/70 hover:text-on-surface transition-all duration-300 text-center" href="index.html#techniques-section">Techniques</a>
+            <a class="mobile-nav-link font-display-md text-3xl md:text-4xl uppercase tracking-[0.3em] text-on-surface/70 hover:text-on-surface transition-all duration-300 text-center" href="debate.html">Debate & Query</a>
+        </div>
+    </div>
+
+    <main class="w-full relative pt-32 md:pt-24 min-h-screen">
         <section class="relative h-[60vh] flex items-end pb-16 px-4 md:px-16">
             <div class="absolute inset-0 z-0">
                 <img alt="Existentialism Spark" class="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhPjp0wogsl93rk4R8r6DL5dT4ssRPxF3KuPphZbkcyfRH9LyEpDveMEXmaMTngUTuFEa9MAAz5WVdZXGixwuj0Q-FQyyaABra2w0mv7elKwf3cdC6JTT1DaqOsnXNzSLWILrHQ76yMaYf_kjJcn-STX0SAyyKw301ToG9UrQtcG9jpkkxB1qiKNPep_Ofs5QzqLxNTEh1aued3zRqId4uVfbV3Q8yiwrRc6dMHcne1vcRcBeoZixMpOyzGF1VlEJPrLNl3S-BLeYi" />
@@ -94,7 +119,78 @@
             </div>
         </section>
     </main>
+    <style>
+        /* Mobile Menu Styles */
+        #mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(19, 19, 19, 0.95);
+            backdrop-filter: blur(24px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(100%);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .no-scroll {
+            overflow: hidden !important;
+        }
+
+        .mobile-nav-link {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #mobile-menu.active .mobile-nav-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #mobile-menu.active .mobile-nav-link:nth-child(1) { transition-delay: 0.2s; }
+        #mobile-menu.active .mobile-nav-link:nth-child(2) { transition-delay: 0.3s; }
+        #mobile-menu.active .mobile-nav-link:nth-child(3) { transition-delay: 0.4s; }
+        #mobile-menu.active .mobile-nav-link:nth-child(4) { transition-delay: 0.5s; }
+
+        #mobile-menu-btn, #mobile-menu-close {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+
     <script src="transition.js"></script>
     <script src="concept-animations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+            const toggleMenu = (show) => {
+                if (!mobileMenu) return;
+                if (show) {
+                    mobileMenu.classList.add('active');
+                    document.body.classList.add('no-scroll');
+                } else {
+                    mobileMenu.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                }
+            };
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => toggleMenu(true));
+            if (mobileMenuClose) mobileMenuClose.addEventListener('click', () => toggleMenu(false));
+            mobileLinks.forEach(link => link.addEventListener('click', () => toggleMenu(false)));
+        });
+    </script>
 </body>
 </html>
