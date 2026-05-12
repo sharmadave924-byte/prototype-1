@@ -121,6 +121,15 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.glass-card {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.6s ease;
+}
+
+.glass-card:hover {
+    transform: scale(1.02);
 }
 
 .overlay-text p {
