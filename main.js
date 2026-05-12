@@ -51,62 +51,42 @@ const images = [];
 let currentFrameIndex = 0;
 let nextFrameIndex = 1;
 let lastFrameTime = 0;
-const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
-const fps = isMobile ? 24 : 30; // Lower FPS for a more meditative, cinematic feel and better performance
+const fps = 48;
 const frameDuration = 1000 / fps;
 let blendProgress = 0;
 
-// Preload images with priority
+// Preload images
 const preloadImages = () => {
     let loadedCount = 0;
-    // Actually, skipping frames might make it jittery. Let's load all but optimize the loop.
 
     for (let i = 1; i <= frameCount; i++) {
         const img = new Image();
         img.src = currentFrame(i);
         img.onload = () => {
             loadedCount++;
-            updateLoadingProgress(loadedCount);
+            const progress = Math.floor((loadedCount / frameCount) * 100);
+            progressFill.style.width = `${progress}%`;
+            progressText.innerText = `${progress}%`;
+            if (loadedCount === frameCount) {
+                initAnimation();
+            }
         };
         img.onerror = () => {
             loadedCount++;
-            updateLoadingProgress(loadedCount);
+            const progress = Math.floor((loadedCount / frameCount) * 100);
+            progressFill.style.width = `${progress}%`;
+            progressText.innerText = `${progress}%`;
+            if (loadedCount === frameCount) {
+                initAnimation();
+            }
         };
         images.push(img);
-    }
-};
-
-const updateLoadingProgress = (loadedCount) => {
-    const progress = Math.floor((loadedCount / frameCount) * 100);
-    if (progressFill) progressFill.style.width = `${progress}%`;
-    if (progressText) progressText.innerText = `${progress}%`;
-    if (loadedCount === frameCount) {
-        initAnimation();
     }
 };
 
 const initAnimation = () => {
     // Hide loader
     loader.classList.add('hidden');
-
-    // Initialize Lenis
-    const lenis = new Lenis({
-        duration: 1.5,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: 'vertical',
-        gestureOrientation: 'vertical',
-        smoothWheel: true,
-        wheelMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-        infinite: false,
-    });
-
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
 
     // Set initial canvas size
     resizeCanvas();
@@ -117,21 +97,17 @@ const initAnimation = () => {
     requestAnimationFrame(playLoop);
 
     // Scroll listener — controls hero text overlay and nav visibility
-    lenis.on('scroll', ({ scroll, limit, velocity, progress }) => {
-        updateOverlays(progress, scroll);
+    window.addEventListener('scroll', () => {
+        const scrollTop = document.documentElement.scrollTop;
+        const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+        if (maxScrollTop <= 0) return;
+        const scrollFraction = scrollTop / maxScrollTop;
+
+        updateOverlays(scrollFraction, scrollTop);
     });
 
     // Trigger initial state
     updateOverlays(0, 0);
-
-    // Simple mouse parallax for "passive observer" depth
-    document.addEventListener('mousemove', (e) => {
-        const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-        const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-        if (heroOverlay) {
-            heroOverlay.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        }
-    });
 
     // Intersection Observer for Reveal Animations
     const revealOptions = {
@@ -204,42 +180,43 @@ const drawCover = (img, alpha) => {
 
 // Blend two frames for smooth transitions
 const renderBlendedFrame = (fromIndex, toIndex, progress) => {
-    // Avoid clearRect to prevent flickering, just draw over
+    context.clearRect(0, 0, canvas.width, canvas.height);
     drawCover(images[fromIndex], 1);
-    if (progress > 0.05) { // Only blend if there's significant progress
+    if (progress > 0) {
         drawCover(images[toIndex], progress);
     }
 };
 
 const updateOverlays = (fraction, scrollTop) => {
     // Hero Text Visibility & Scroll Blur
-    const heroFadeStart = window.innerHeight * 0.4;
-    const heroFadeEnd = window.innerHeight * 1.5;
+    const heroFadeStart = window.innerHeight * 0.8; // Start fading much later
+    const heroFadeEnd = window.innerHeight * 2.2;   // End fading even later
 
-    if (scrollTop < heroFadeEnd) {
+    if (fraction > 0.03 && scrollTop < heroFadeEnd) {
         heroOverlay.classList.add('visible');
         
-        const fadeRange = heroFadeEnd - heroFadeStart;
         if (scrollTop > heroFadeStart) {
-            const heroProgress = (scrollTop - heroFadeStart) / fadeRange;
-            const heroBlur = heroProgress * 10;
+            const heroProgress = (scrollTop - heroFadeStart) / (heroFadeEnd - heroFadeStart);
+            const heroBlur = heroProgress * 20;
             const heroOpacity = 1 - heroProgress;
             heroOverlay.style.filter = `blur(${heroBlur}px)`;
             heroOverlay.style.opacity = heroOpacity;
-            heroOverlay.style.transform = `translateY(${-heroProgress * 50}px)`;
         } else {
             heroOverlay.style.filter = `blur(0px)`;
-            heroOverlay.style.opacity = '1';
-            heroOverlay.style.transform = `translateY(0px)`;
+            heroOverlay.style.opacity = ''; // use css opacity
         }
     } else {
         heroOverlay.classList.remove('visible');
+        heroOverlay.style.filter = `blur(0px)`;
+        heroOverlay.style.opacity = '';
     }
 
-    // Dynamic Blur & Dim for Canvas Background - more subtle for meditative tone
-    const maxBlur = 8;
+    // Dynamic Blur & Dim for Canvas Background
+    // Blur increases up to 15px over the first 100vh of scroll
+    const maxBlur = 15;
     const blurAmount = Math.min((scrollTop / window.innerHeight) * maxBlur, maxBlur);
-    const darkness = Math.max(1 - (blurAmount / maxBlur) * 0.4, 0.6);
+    // Brightness decreases down to 0.4 as it blurs to make text pop
+    const darkness = Math.max(1 - (blurAmount / maxBlur) * 0.6, 0.4);
     canvas.style.filter = `blur(${blurAmount}px) brightness(${darkness})`;
 
     // Navigation stays clean and visible to blend with hero

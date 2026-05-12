@@ -78,20 +78,18 @@
             position: fixed;
             inset: 0;
             z-index: 100;
-            background: rgba(19, 19, 19, 0.98);
-            backdrop-filter: blur(32px);
+            background: rgba(19, 19, 19, 0.95);
+            backdrop-filter: blur(24px);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateX(100%);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         #mobile-menu.active {
-            opacity: 1;
-            pointer-events: auto;
+            transform: translateX(0);
         }
 
         .no-scroll {
@@ -227,28 +225,28 @@
             <!-- Zen Buddhism -->
             <a href="zen.html" class="glass-card group relative overflow-hidden rounded-2xl p-8 flex flex-col justify-end min-h-[400px] reveal">
                 <div class="absolute inset-0 z-0">
-                    <img src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&q=80&w=800" alt="Zen" class="w-full h-full object-cover opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-1000 mix-blend-luminosity">
+                    <img src="https://images.unsplash.com/photo-1545191761-9c41a347b961?auto=format&fit=crop&q=80&w=2070" alt="Zen Buddhism" class="w-full h-full object-cover opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-1000 mix-blend-luminosity">
                     <div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
                 </div>
                 <div class="relative z-10">
-                    <span class="inline-block bg-primary/10 text-primary font-label-md text-[10px] px-3 py-1 rounded-sm uppercase tracking-widest mb-4 border border-primary/20">Breath of Void</span>
+                    <span class="inline-block bg-white/5 text-on-surface font-label-md text-[10px] px-3 py-1 rounded-sm uppercase tracking-widest mb-4 border border-white/10">Breath of Void</span>
                     <h2 class="font-display-md text-4xl text-on-surface mb-3 uppercase tracking-wide">Zen Buddhism</h2>
-                    <p class="font-body-md text-on-surface-variant mb-6 max-w-sm">Empty your mind. Be formless, shapeless. Experience reality directly, without the interference of thought.</p>
-                    <span class="inline-flex items-center gap-2 text-primary font-label-md text-xs uppercase tracking-widest group-hover:gap-4 transition-all">Enter the Silence <span class="material-symbols-outlined text-sm">east</span></span>
+                    <p class="font-body-md text-on-surface-variant mb-6 max-w-sm">Find clarity in the space between thoughts and embrace the emptiness that contains everything.</p>
+                    <span class="inline-flex items-center gap-2 text-on-surface font-label-md text-xs uppercase tracking-widest group-hover:gap-4 transition-all">Find Stillness <span class="material-symbols-outlined text-sm">east</span></span>
                 </div>
             </a>
 
             <!-- Nihilism -->
             <a href="nihilism.html" class="glass-card group relative overflow-hidden rounded-2xl p-8 flex flex-col justify-end min-h-[400px] reveal">
                 <div class="absolute inset-0 z-0">
-                    <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&q=80&w=800" alt="Nihilism" class="w-full h-full object-cover opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-1000 mix-blend-luminosity">
+                    <img src="https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?auto=format&fit=crop&q=80&w=2070" alt="Nihilism" class="w-full h-full object-cover opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-1000 mix-blend-luminosity">
                     <div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
                 </div>
                 <div class="relative z-10">
                     <span class="inline-block bg-white/5 text-on-surface font-label-md text-[10px] px-3 py-1 rounded-sm uppercase tracking-widest mb-4 border border-white/10">Breath of Silence</span>
                     <h2 class="font-display-md text-4xl text-on-surface mb-3 uppercase tracking-wide">Nihilism</h2>
-                    <p class="font-body-md text-on-surface-variant mb-6 max-w-sm">Nothing is real. In the absence of objective truth, we find the ultimate freedom. Accepting the void.</p>
-                    <span class="inline-flex items-center gap-2 text-on-surface font-label-md text-xs uppercase tracking-widest group-hover:gap-4 transition-all">Accept the Void <span class="material-symbols-outlined text-sm">east</span></span>
+                    <p class="font-body-md text-on-surface-variant mb-6 max-w-sm">The art of liberation. When nothing matters, everything is possible. Find your power in the ultimate freedom of the void.</p>
+                    <span class="inline-flex items-center gap-2 text-on-surface font-label-md text-xs uppercase tracking-widest group-hover:gap-4 transition-all">Embrace the Silence <span class="material-symbols-outlined text-sm">east</span></span>
                 </div>
             </a>
 
@@ -265,7 +263,7 @@
                     <span class="inline-block bg-white/5 text-on-surface font-label-md text-[10px] px-3 py-1 rounded-sm uppercase tracking-widest mb-4 border border-white/10">Breath of Mist</span>
                     <h2 class="font-display-md text-4xl text-on-surface mb-3 uppercase tracking-wide">Absurdism</h2>
                     <p class="font-body-md text-on-surface-variant mb-6 max-w-sm">Embrace the chaos. Laugh in the face of the unknown and find joy in the struggle itself. One must imagine Sisyphus happy.</p>
-                    <span class="inline-flex items-center gap-2 text-on-surface font-label-md text-xs uppercase tracking-widest group-hover:gap-4 transition-all">Embrace the Chaos <span class="material-symbols-outlined text-sm">east</span></span>
+                    <span class="inline-flex items-center gap-2 text-on-surface font-label-md text-xs uppercase tracking-widest group-hover:gap-4 transition-all">Embrace the Void <span class="material-symbols-outlined text-sm">east</span></span>
                 </div>
             </a>
 
