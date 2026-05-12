@@ -19,19 +19,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Optimize smooth scroll for mobile */
-@media (max-width: 768px) {
-    html {
-        scroll-behavior: auto;
-    }
-}
-
-@media (min-width: 769px) {
-    html {
-        scroll-behavior: smooth;
-    }
-}
-
 /* Loader */
 #loader {
     position: fixed;
@@ -98,12 +85,6 @@ body {
     width: 100%;
 }
 
-@media (max-width: 768px) {
-    #hero {
-        height: 120vh; /* Reduced from 300vh for mobile */
-    }
-}
-
 #scroll-canvas {
     position: sticky;
     top: 0;
@@ -111,7 +92,6 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: 1;
-    contain: layout style paint;
 }
 
 /* Overlay Text */
@@ -125,8 +105,6 @@ body {
     opacity: 0;
     width: 90%;
     transition: opacity 0.8s ease, transform 0.8s ease;
-    will-change: opacity, filter, transform;
-    contain: layout style paint;
 }
 
 .section-1 { top: 30%; }

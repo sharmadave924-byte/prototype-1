@@ -8,15 +8,6 @@ const loader = document.getElementById('loader');
 const heroOverlay = document.getElementById('hero-overlay');
 const mainNav = document.getElementById('main-nav');
 const mobileNav = document.getElementById('mobile-nav');
-
-// Mobile detection
-const isMobile = () => window.innerWidth <= 768 || window.matchMedia("(max-width: 768px)").matches;
-let currentIsMobile = isMobile();
-
-// Update mobile flag on resize
-window.addEventListener('resize', () => {
-    currentIsMobile = isMobile();
-}, { passive: true });
 document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -99,11 +90,21 @@ const initAnimation = () => {
 
     // Set initial canvas size
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas, { passive: true });
+    window.addEventListener('resize', resizeCanvas);
 
     // Start the auto-playing video loop
     lastFrameTime = performance.now();
     requestAnimationFrame(playLoop);
+
+    // Scroll listener — controls hero text overlay and nav visibility
+    window.addEventListener('scroll', () => {
+        const scrollTop = document.documentElement.scrollTop;
+        const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+        if (maxScrollTop <= 0) return;
+        const scrollFraction = scrollTop / maxScrollTop;
+
+        updateOverlays(scrollFraction, scrollTop);
+    });
 
     // Trigger initial state
     updateOverlays(0, 0);
@@ -118,7 +119,9 @@ const initAnimation = () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('reveal-visible');
+                // revealObserver.unobserve(entry.target); // Keep if you want it to only reveal once
             } else {
+                // Remove class if you want it to animate every time you scroll back up
                 entry.target.classList.remove('reveal-visible');
             }
         });
@@ -126,25 +129,22 @@ const initAnimation = () => {
 
     const revealElements = document.querySelectorAll('.reveal-left, .reveal-right');
     revealElements.forEach(el => revealObserver.observe(el));
+};
 
-    // Throttled scroll listener with passive flag for mobile optimization
-    let lastScrollUpdate = 0;
-    const handleScroll = () => {
-        const now = performance.now();
-        const scrollTop = document.documentElement.scrollTop;
-        const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
-        
-        // On mobile, reduce scroll update frequency to improve performance
-        const updateThreshold = currentIsMobile ? 100 : 50; // ms
-        
-        if (now - lastScrollUpdate >= updateThreshold && maxScrollTop > 0) {
-            const scrollFraction = scrollTop / maxScrollTop;
-            updateOverlays(scrollFraction, scrollTop);
-            lastScrollUpdate = now;
-        }
-    };
+// Auto-play frames in a loop (ping-pong to avoid cuts)
+const playLoop = (timestamp) => {
+    const elapsed = timestamp - lastFrameTime;
+    blendProgress = Math.min(elapsed / frameDuration, 1);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    if (elapsed >= frameDuration) {
+        lastFrameTime = timestamp;
+        currentFrameIndex = nextFrameIndex;
+        nextFrameIndex = (currentFrameIndex + 1) % frameCount;
+        blendProgress = 0;
+    }
+
+    renderBlendedFrame(currentFrameIndex, nextFrameIndex, blendProgress);
+    requestAnimationFrame(playLoop);
 };
 
 const resizeCanvas = () => {
@@ -189,8 +189,8 @@ const renderBlendedFrame = (fromIndex, toIndex, progress) => {
 
 const updateOverlays = (fraction, scrollTop) => {
     // Hero Text Visibility & Scroll Blur
-    const heroFadeStart = window.innerHeight * 0.8;
-    const heroFadeEnd = window.innerHeight * 2.2;
+    const heroFadeStart = window.innerHeight * 0.8; // Start fading much later
+    const heroFadeEnd = window.innerHeight * 2.2;   // End fading even later
 
     if (fraction > 0.03 && scrollTop < heroFadeEnd) {
         heroOverlay.classList.add('visible');
@@ -203,7 +203,7 @@ const updateOverlays = (fraction, scrollTop) => {
             heroOverlay.style.opacity = heroOpacity;
         } else {
             heroOverlay.style.filter = `blur(0px)`;
-            heroOverlay.style.opacity = '';
+            heroOverlay.style.opacity = ''; // use css opacity
         }
     } else {
         heroOverlay.classList.remove('visible');
@@ -211,9 +211,11 @@ const updateOverlays = (fraction, scrollTop) => {
         heroOverlay.style.opacity = '';
     }
 
-    // Optimize canvas filters for mobile - reduce blur intensity for better performance
-    let maxBlur = currentIsMobile ? 6 : 15; // Significantly reduced blur on mobile
+    // Dynamic Blur & Dim for Canvas Background
+    // Blur increases up to 15px over the first 100vh of scroll
+    const maxBlur = 15;
     const blurAmount = Math.min((scrollTop / window.innerHeight) * maxBlur, maxBlur);
+    // Brightness decreases down to 0.4 as it blurs to make text pop
     const darkness = Math.max(1 - (blurAmount / maxBlur) * 0.6, 0.4);
     canvas.style.filter = `blur(${blurAmount}px) brightness(${darkness})`;
 
