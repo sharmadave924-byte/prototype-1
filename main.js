@@ -41,6 +41,30 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => toggleMenu(false));
     });
 });
+    // --- FAST SCROLL PATCH FOR ANCHOR LINKS ---
+    // Applies to all anchor links that scroll to sections (desktop & mobile)
+    function fastScrollToSection(e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                // Remove browser smooth scroll for instant effect
+                document.documentElement.style.scrollBehavior = 'auto';
+                // Use scrollIntoView with short duration (simulate fast smooth scroll)
+                const top = target.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({ top, behavior: 'auto' });
+                // Restore smooth scroll after a short delay
+                setTimeout(() => {
+                    document.documentElement.style.scrollBehavior = '';
+                }, 200);
+            }
+        }
+    }
+    // Attach to all anchor links that scroll to sections
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', fastScrollToSection);
+    });
 
 const frameCount = 178;
 const currentFrame = index => (
